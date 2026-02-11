@@ -1,17 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lottery Number Generator</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>화면 전체 캡처</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Lottery Number Generator</h1>
-        <div class="numbers"></div>
-        <button id="generate">Generate Numbers</button>
-    </div>
-    <script src="main.js"></script>
+  <main class="app">
+    <header class="header">
+      <h1>화면 전체 캡처</h1>
+      <p>전체 화면을 공유한 뒤, 원하는 순간을 캡처하세요.</p>
+    </header>
+
+    <section class="controls">
+      <button id="startBtn" class="btn primary">화면 공유 시작</button>
+      <button id="captureBtn" class="btn" disabled>캡쳐</button>
+      <button id="stopBtn" class="btn danger" disabled>화면 공유 중지</button>
+    </section>
+
+    <section class="preview">
+      <div class="panel">
+        <h2>실시간 화면</h2>
+        <video id="previewVideo" autoplay playsinline></video>
+      </div>
+      <div class="panel">
+        <h2>캡처 결과</h2>
+        <canvas id="captureCanvas"></canvas>
+      </div>
+    </section>
+
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
