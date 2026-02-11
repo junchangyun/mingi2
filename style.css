@@ -102,6 +102,39 @@ canvas {
   object-fit: contain;
 }
 
+.form-panel {
+  margin-top: 20px;
+}
+
+.inquiry-form {
+  display: grid;
+  gap: 12px;
+}
+
+.inquiry-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.inquiry-form input,
+.inquiry-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0f1324;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.inquiry-form input:focus,
+.inquiry-form textarea:focus {
+  outline: 2px solid #3ddc97;
+  border-color: transparent;
+}
+
 .message {
   margin-top: 20px;
   color: var(--muted);

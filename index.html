@@ -30,6 +30,25 @@
       </div>
     </section>
 
+    <section class="panel form-panel">
+      <h2>제휴 문의</h2>
+      <form action="https://formspree.io/f/mzdadapg" method="POST" class="inquiry-form">
+        <label>
+          이름
+          <input type="text" name="name" placeholder="홍길동" required />
+        </label>
+        <label>
+          이메일
+          <input type="email" name="email" placeholder="email@example.com" required />
+        </label>
+        <label>
+          문의 내용
+          <textarea name="message" rows="5" placeholder="제휴 제안을 적어주세요." required></textarea>
+        </label>
+        <button type="submit" class="btn primary">보내기</button>
+      </form>
+    </section>
+
     <p id="message" class="message" role="status" aria-live="polite"></p>
   </main>
 
