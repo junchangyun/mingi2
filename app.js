@@ -6,6 +6,7 @@ const canvas = document.getElementById('captureCanvas');
 const message = document.getElementById('message');
 const labelContainer = document.getElementById('label-container');
 const topResult = document.getElementById('top-result');
+const historyList = document.getElementById('history-list');
 
 const MODEL_URL = 'https://teachablemachine.withgoogle.com/models/ANAssuJl9/';
 
@@ -61,6 +62,47 @@ async function predictFromCanvas() {
     const item = prediction[i];
     labelContainer.childNodes[i].textContent = `${item.className}: ${(item.probability * 100).toFixed(1)}%`;
   }
+
+  return { best, prediction };
+}
+
+function formatCaptureTime() {
+  return new Date().toLocaleString('ko-KR', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+  });
+}
+
+function addHistoryItem(best) {
+  const item = document.createElement('article');
+  item.className = 'history-item';
+
+  const img = document.createElement('img');
+  img.className = 'history-image';
+  img.src = canvas.toDataURL('image/png');
+  img.alt = '캡처 이미지';
+
+  const info = document.createElement('div');
+  info.className = 'history-info';
+
+  const time = document.createElement('p');
+  time.className = 'history-time';
+  time.textContent = formatCaptureTime();
+
+  const result = document.createElement('p');
+  result.className = 'history-result';
+  result.textContent = `${best.className} (${(best.probability * 100).toFixed(1)}%)`;
+
+  info.appendChild(time);
+  info.appendChild(result);
+  item.appendChild(img);
+  item.appendChild(info);
+  historyList.prepend(item);
 }
 
 startBtn.addEventListener('click', async () => {
@@ -99,7 +141,8 @@ captureBtn.addEventListener('click', async () => {
   const ctx = canvas.getContext('2d');
   ctx.drawImage(video, 0, 0, videoWidth, videoHeight);
   try {
-    await predictFromCanvas();
+    const { best } = await predictFromCanvas();
+    addHistoryItem(best);
     setMessage('캡처 이미지 분류가 완료되었습니다.');
   } catch (err) {
     setMessage('이미지 분류에 실패했습니다.');
