@@ -82,6 +82,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 16px;
+  margin-top: 20px;
 }
 
 .panel h2 {
@@ -102,37 +103,23 @@ canvas {
   object-fit: contain;
 }
 
-.form-panel {
-  margin-top: 20px;
+.top-result {
+  margin: 0 0 12px;
+  font-size: 18px;
+  font-weight: 700;
 }
 
-.inquiry-form {
+.label-container {
   display: grid;
-  gap: 12px;
+  gap: 8px;
 }
 
-.inquiry-form label {
-  display: grid;
-  gap: 6px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.inquiry-form input,
-.inquiry-form textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
+.label-container div {
   background: #0f1324;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
   color: var(--text);
-  font-size: 14px;
-}
-
-.inquiry-form input:focus,
-.inquiry-form textarea:focus {
-  outline: 2px solid #3ddc97;
-  border-color: transparent;
 }
 
 .message {

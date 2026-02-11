@@ -4,8 +4,14 @@ const stopBtn = document.getElementById('stopBtn');
 const video = document.getElementById('previewVideo');
 const canvas = document.getElementById('captureCanvas');
 const message = document.getElementById('message');
+const labelContainer = document.getElementById('label-container');
+const topResult = document.getElementById('top-result');
+
+const MODEL_URL = 'https://teachablemachine.withgoogle.com/models/ANAssuJl9/';
 
 let stream = null;
+let model = null;
+let maxPredictions = 0;
 
 function setMessage(text) {
   message.textContent = text;
@@ -18,7 +24,6 @@ function enableCaptureControls(enabled) {
 
 function stopShare() {
   if (stream) {
-    // Stop all tracks to end the screen share.
     stream.getTracks().forEach((track) => track.stop());
     stream = null;
   }
@@ -27,9 +32,41 @@ function stopShare() {
   setMessage('화면 공유가 중지되었습니다.');
 }
 
+async function initModel() {
+  if (model) return;
+
+  const modelURL = `${MODEL_URL}model.json`;
+  const metadataURL = `${MODEL_URL}metadata.json`;
+  model = await tmImage.load(modelURL, metadataURL);
+  maxPredictions = model.getTotalClasses();
+
+  labelContainer.innerHTML = '';
+  for (let i = 0; i < maxPredictions; i += 1) {
+    labelContainer.appendChild(document.createElement('div'));
+  }
+}
+
+async function predictFromCanvas() {
+  if (!model) {
+    await initModel();
+  }
+
+  const prediction = await model.predict(canvas);
+  prediction.sort((a, b) => b.probability - a.probability);
+
+  const best = prediction[0];
+  topResult.textContent = `가장 유력: ${best.className} (${(best.probability * 100).toFixed(1)}%)`;
+
+  for (let i = 0; i < maxPredictions; i += 1) {
+    const item = prediction[i];
+    labelContainer.childNodes[i].textContent = `${item.className}: ${(item.probability * 100).toFixed(1)}%`;
+  }
+}
+
 startBtn.addEventListener('click', async () => {
   try {
-    // Request full screen capture from the user.
+    await initModel();
+
     stream = await navigator.mediaDevices.getDisplayMedia({
       video: true,
       audio: false,
@@ -37,16 +74,14 @@ startBtn.addEventListener('click', async () => {
 
     video.srcObject = stream;
     enableCaptureControls(true);
-    setMessage('화면 공유가 시작되었습니다. 캡쳐를 눌러 저장하세요.');
+    setMessage('화면 공유가 시작되었습니다. 캡쳐 및 분류 버튼을 눌러 결과를 확인하세요.');
 
-    // If the user stops sharing from browser UI, update the UI.
     const [track] = stream.getVideoTracks();
     track.addEventListener('ended', () => {
       stopShare();
     });
   } catch (err) {
-    // Handle permission denial or user cancellation.
-    setMessage('화면 공유가 취소되었거나 권한이 거부되었습니다.');
+    setMessage('모델 로드 실패 또는 화면 공유 권한이 거부되었습니다.');
   }
 });
 
@@ -59,38 +94,18 @@ captureBtn.addEventListener('click', async () => {
     return;
   }
 
-  // Draw the current video frame to the canvas.
   canvas.width = videoWidth;
   canvas.height = videoHeight;
   const ctx = canvas.getContext('2d');
   ctx.drawImage(video, 0, 0, videoWidth, videoHeight);
-
-  // Convert canvas to PNG and download.
-  canvas.toBlob((blob) => {
-    if (!blob) return;
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `screenshot_${timestamp()}.png`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
-  }, 'image/png');
+  try {
+    await predictFromCanvas();
+    setMessage('캡처 이미지 분류가 완료되었습니다.');
+  } catch (err) {
+    setMessage('이미지 분류에 실패했습니다.');
+  }
 });
 
 stopBtn.addEventListener('click', () => {
   stopShare();
 });
-
-function timestamp() {
-  const d = new Date();
-  const pad = (n) => String(n).padStart(2, '0');
-  const yyyy = d.getFullYear();
-  const mm = pad(d.getMonth() + 1);
-  const dd = pad(d.getDate());
-  const hh = pad(d.getHours());
-  const mi = pad(d.getMinutes());
-  const ss = pad(d.getSeconds());
-  return `${yyyy}${mm}${dd}_${hh}${mi}${ss}`;
-}

@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>화면 전체 캡처</title>
+  <title>화면 캡처 고양이/강아지 분류</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="app">
     <header class="header">
-      <h1>화면 전체 캡처</h1>
-      <p>전체 화면을 공유한 뒤, 원하는 순간을 캡처하세요.</p>
+      <h1>화면 캡처 고양이/강아지 분류</h1>
+      <p>전체 화면을 공유한 뒤 캡처하면, Teachable Machine 모델로 고양이/강아지를 분류합니다.</p>
     </header>
 
     <section class="controls">
       <button id="startBtn" class="btn primary">화면 공유 시작</button>
-      <button id="captureBtn" class="btn" disabled>캡쳐</button>
+      <button id="captureBtn" class="btn" disabled>캡쳐 및 분류</button>
       <button id="stopBtn" class="btn danger" disabled>화면 공유 중지</button>
     </section>
 
@@ -30,51 +30,17 @@
       </div>
     </section>
 
-    <section class="panel form-panel">
-      <h2>제휴 문의</h2>
-      <form action="https://formspree.io/f/mzdadapg" method="POST" class="inquiry-form">
-        <label>
-          이름
-          <input type="text" name="name" placeholder="홍길동" required />
-        </label>
-        <label>
-          이메일
-          <input type="email" name="email" placeholder="email@example.com" required />
-        </label>
-        <label>
-          문의 내용
-          <textarea name="message" rows="5" placeholder="제휴 제안을 적어주세요." required></textarea>
-        </label>
-        <button type="submit" class="btn primary">보내기</button>
-      </form>
+    <section class="panel">
+      <h2>분류 결과</h2>
+      <p id="top-result" class="top-result">아직 분류되지 않았습니다.</p>
+      <div id="label-container" class="label-container"></div>
     </section>
 
     <p id="message" class="message" role="status" aria-live="polite"></p>
-
-    <section class="panel comments-panel">
-      <h2>댓글</h2>
-      <div id="disqus_thread"></div>
-      <script>
-        /**
-        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-        /*
-        var disqus_config = function () {
-        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        */
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://mingi2.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
