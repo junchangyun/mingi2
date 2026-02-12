@@ -1,11 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
 :root {
-  --bg: #0f1220;
-  --panel: #171a2b;
-  --text: #e7e9f3;
-  --muted: #9aa3c7;
-  --primary: #3ddc97;
-  --danger: #ff6b6b;
-  --border: #2a2f45;
+  --bg: #f7f4ec;
+  --ink: #1f2a2f;
+  --muted: #5e6a70;
+  --line: #d5cec0;
+  --brand: #0d5c63;
+  --brand-2: #e09f3e;
+  --card: #fffdf7;
 }
 
 * {
@@ -14,177 +16,198 @@
 
 body {
   margin: 0;
-  font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  background: radial-gradient(1200px 600px at 10% 10%, #1a1f35, #0f1220 60%);
-  color: var(--text);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 5% 8%, rgba(224, 159, 62, 0.16), transparent 45%),
+    radial-gradient(circle at 92% 20%, rgba(13, 92, 99, 0.15), transparent 48%),
+    var(--bg);
+  font-family: 'Noto Serif KR', serif;
+  line-height: 1.7;
 }
 
-.app {
-  max-width: 1100px;
+a {
+  color: var(--brand);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.container {
+  width: min(1080px, 92vw);
   margin: 0 auto;
-  padding: 32px 20px 48px;
 }
 
-.header h1 {
-  margin: 0 0 8px;
-  font-size: 32px;
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 253, 247, 0.88);
+  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
 }
 
-.header p {
-  margin: 0 0 24px;
-  color: var(--muted);
-}
-
-.controls {
+.topbar {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-
-.btn {
-  border: 1px solid var(--border);
-  background: transparent;
-  color: var(--text);
-  padding: 10px 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.btn.primary {
-  background: var(--primary);
-  color: #0b1b13;
-  border-color: transparent;
-  font-weight: 700;
-}
-
-.btn.danger {
-  background: var(--danger);
-  border-color: transparent;
-  color: #2b0b0b;
-  font-weight: 700;
-}
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.preview {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.panel {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 16px;
-  margin-top: 20px;
-}
-
-.panel h2 {
-  margin: 0 0 12px;
-  font-size: 16px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-video,
-canvas {
-  width: 100%;
-  height: 320px;
-  background: #0a0d18;
-  border-radius: 10px;
-  display: block;
-  border: 1px solid #20263b;
-  object-fit: contain;
-}
-
-.top-result {
-  margin: 0 0 12px;
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.label-container {
-  display: grid;
-  gap: 8px;
-}
-
-.label-container div {
-  background: #0f1324;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 12px;
-  color: var(--text);
-}
-
-.message {
-  margin-top: 20px;
-  color: var(--muted);
-  min-height: 20px;
-}
-
-@media (max-width: 600px) {
-  .header h1 {
-    font-size: 24px;
-  }
-}
-
-.history-list {
-  display: grid;
-  gap: 10px;
-}
-
-.history-item {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 12px;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #11162a;
+  gap: 12px;
+  padding: 14px 0;
 }
 
-.history-image {
-  width: 100%;
-  height: 110px;
-  object-fit: contain;
-  border-radius: 8px;
-  border: 1px solid #20263b;
-  background: #0a0d18;
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--ink);
 }
 
-.history-info {
-  display: grid;
-  gap: 6px;
-}
-
-.history-time,
-.history-result {
+.nav-list,
+.footer-links,
+.meta-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
   margin: 0;
 }
 
-.history-time {
-  color: var(--muted);
-  font-size: 13px;
+.nav-list a,
+.footer-links a,
+.meta-links a {
+  text-decoration: none;
+  color: var(--ink);
 }
 
-.history-result {
-  font-size: 16px;
+.hero {
+  padding: 58px 0 30px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 22px;
+}
+
+.eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--brand);
   font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 8px;
 }
 
-@media (max-width: 600px) {
-  .history-item {
+h1,
+h2,
+h3 {
+  margin: 0 0 10px;
+  line-height: 1.35;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.cta {
+  display: inline-block;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.hero-card,
+.card,
+.doc {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.section {
+  padding: 28px 0;
+}
+
+.section.alt {
+  background: rgba(255, 255, 255, 0.35);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 14px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.checklist ol,
+.doc ol,
+.doc ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.site-footer {
+  padding: 22px 0 30px;
+}
+
+.footer-grid {
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.doc-wrap {
+  padding: 34px 0 46px;
+}
+
+.doc-header {
+  margin-bottom: 14px;
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.doc p,
+.doc li {
+  color: #2b353a;
+}
+
+.doc time {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 880px) {
+  .hero-grid {
     grid-template-columns: 1fr;
   }
+}
 
-  .history-image {
-    height: 180px;
+@media (max-width: 680px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
