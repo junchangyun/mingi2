@@ -31,7 +31,7 @@ function renderRows(rows) {
 
 async function loadStatus() {
   try {
-    const resp = await fetch('http://localhost:5000/status', { cache: 'no-store' });
+    const resp = await fetch('/status', { cache: 'no-store' });
     if (!resp.ok) {
       throw new Error(`status ${resp.status}`);
     }

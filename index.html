@@ -46,7 +46,7 @@
       <h2>모니터 제어</h2>
       <div class="app-shell">
         <div class="panel controls">
-          <form method="post" action="http://localhost:5000/start" class="grid-form">
+          <form method="post" action="/start" class="grid-form">
             <label for="bybit_api_key">Bybit API Key</label>
             <input id="bybit_api_key" name="bybit_api_key" autocomplete="off" required />
 
@@ -56,7 +56,7 @@
             <button class="btn" type="submit">모니터 시작</button>
           </form>
 
-          <form method="post" action="http://localhost:5000/stop">
+          <form method="post" action="/stop">
             <button class="btn subtle" type="submit">모니터 중지</button>
           </form>
 
