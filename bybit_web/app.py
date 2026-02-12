@@ -13,6 +13,7 @@ import mplfinance as mpf
 import pandas as pd
 import requests
 from flask import Flask, jsonify, redirect, render_template, request, url_for
+from flask_cors import CORS
 from openai import OpenAI
 
 TIMEFRAME = "15m"
@@ -30,6 +31,7 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 
 app = Flask(__name__)
+CORS(app)
 
 
 class MonitorState:

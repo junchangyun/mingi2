@@ -3,6 +3,7 @@ const runningEl = document.getElementById('running');
 const keyMaskEl = document.getElementById('key-mask');
 const statusEl = document.getElementById('status');
 const recentBody = document.getElementById('recent-body');
+const BACKEND_BASE_URL = 'https://port-0-flask-mlj6ks2efbf2f4cb.sel3.cloudtype.app';
 
 function setMessage(text) {
   if (message) message.textContent = text;
@@ -31,7 +32,7 @@ function renderRows(rows) {
 
 async function loadStatus() {
   try {
-    const resp = await fetch('/status', { cache: 'no-store' });
+    const resp = await fetch(`${BACKEND_BASE_URL}/status`, { cache: 'no-store' });
     if (!resp.ok) {
       throw new Error(`status ${resp.status}`);
     }
