@@ -1,0 +1,2 @@
+-r bybit_web/requirements.txt
+gunicorn>=22.0.0
