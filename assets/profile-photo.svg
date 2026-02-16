@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+  <title id="t">Profile Placeholder</title>
+  <desc id="d">Replace this with Song Pilgyo profile photo</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#003c82"/>
+      <stop offset="1" stop-color="#00aad2"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <circle cx="600" cy="350" r="140" fill="#e6f2ff" opacity="0.95"/>
+  <path d="M340 760c26-124 135-203 260-203s234 79 260 203" fill="#e6f2ff" opacity="0.95"/>
+  <text x="600" y="830" fill="#ffffff" font-size="46" text-anchor="middle" font-family="Arial, sans-serif">PROFILE PHOTO</text>
+</svg>

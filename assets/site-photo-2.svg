@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+  <title id="t">Site Photo Placeholder 2</title>
+  <desc id="d">Replace this with quality or equipment photo</desc>
+  <defs>
+    <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f2744"/>
+      <stop offset="1" stop-color="#00a1c9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g2)"/>
+  <circle cx="360" cy="430" r="170" fill="#e8f6ff" opacity="0.9"/>
+  <circle cx="600" cy="430" r="170" fill="#d5ebff" opacity="0.9"/>
+  <circle cx="840" cy="430" r="170" fill="#c4dfff" opacity="0.9"/>
+  <path d="M280 430h160M520 430h160M760 430h160" stroke="#174071" stroke-width="14" stroke-linecap="round"/>
+  <text x="600" y="830" fill="#ffffff" font-size="46" text-anchor="middle" font-family="Arial, sans-serif">SITE PHOTO 2</text>
+</svg>

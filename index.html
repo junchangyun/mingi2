@@ -2,105 +2,144 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="단어 카드, 4지선다 퀴즈, 병음 입력으로 매일 중국어를 연습하는 학습 사이트" />
-  <title>중국어 학습 스튜디오</title>
+  <meta name="
+  viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="마이스터고 출신 자동차 생산기술 인재 송필교의 포트폴리오" />
+  <title>송필교 포트폴리오</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Pretendard:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container topbar">
-      <a class="logo" href="index.html">중국어 학습 스튜디오</a>
-      <nav aria-label="주 메뉴">
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">SONG PILGYO</a>
+      <nav aria-label="메인 메뉴">
         <ul class="nav-list">
-          <li><a href="#vocab" aria-current="page">단어 카드</a></li>
-          <li><a href="#quiz">퀴즈</a></li>
-          <li><a href="#pinyin">병음 연습</a></li>
+          <li><a href="#about">소개</a></li>
+          <li><a href="#photos">사진</a></li>
+          <li><a href="#career">이력</a></li>
+          <li><a href="#projects">프로젝트</a></li>
+          <li><a href="#contact">연락처</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
       <div class="container hero-grid">
-        <div>
-          <p class="eyebrow">MANDARIN DAILY PRACTICE</p>
-          <h1>하루 10분, 단어-퀴즈-병음 루틴으로 중국어 감각 만들기</h1>
-          <p class="lead">HSK 기초 단어를 카드로 익히고, 즉시 퀴즈로 확인한 뒤 병음 타이핑으로 발음 감각까지 훈련하세요.</p>
+        <div class="hero-copy reveal">
+          <p class="eyebrow">AUTOMOTIVE PORTFOLIO</p>
+          <h1>송필교<br />자동차 생산 현장의 디테일을 설계합니다</h1>
+          <p class="lead">마이스터고에서 기반을 다지고, 현재 현대자동차에서 제조 품질과 공정 효율을 중심으로 경험을 쌓고 있습니다.</p>
+          <a class="cta" href="#projects">프로젝트 보기</a>
         </div>
-        <aside class="hero-card" aria-label="학습 루틴">
-          <h2>오늘의 루틴</h2>
-          <ol>
-            <li>단어 카드 5개 보기</li>
-            <li>퀴즈 3문제 풀기</li>
-            <li>병음 연습 3회 통과</li>
-          </ol>
+        <aside class="hero-badge reveal">
+          <div class="hyundai-mark" aria-label="현대차 스타일 마크">
+            <svg viewBox="0 0 220 120" role="img" aria-hidden="true">
+              <ellipse cx="110" cy="60" rx="95" ry="46"></ellipse>
+              <path d="M72 36V84M148 36V84M72 59H148"></path>
+            </svg>
+          </div>
+          <p class="badge-title">HYUNDAI MOTOR STYLE</p>
+          <p class="badge-text">브랜드 감성을 반영한 포트폴리오 테마</p>
         </aside>
       </div>
     </section>
 
-    <section class="section container" id="vocab">
-      <h2>단어 카드</h2>
-      <div class="app-shell">
-        <div class="panel controls">
-          <div class="grid-form">
-            <label for="level-select">학습 레벨</label>
-            <select id="level-select">
-              <option value="HSK1">HSK 1</option>
-              <option value="HSK2">HSK 2</option>
-            </select>
-            <button class="btn" id="next-card" type="button">새 카드 보기</button>
+    <section class="section container reveal" id="about">
+      <h2>소개</h2>
+      <div class="card">
+        <p>
+          안녕하세요. 자동차 산업에서 실무형 엔지니어로 성장 중인 송필교입니다.
+          현장 문제를 빠르게 파악하고, 공정 개선과 협업 중심으로 실행하는 것을 강점으로 삼고 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container reveal" id="photos">
+      <h2>프로필/현장 사진</h2>
+      <div class="photo-grid">
+        <article class="photo-card">
+          <img src="assets/profile-photo.svg" alt="송필교 프로필 사진 자리" />
+          <div class="photo-meta">
+            <h3>프로필 사진</h3>
+            <p>`assets/profile-photo.svg`를 실제 프로필 사진 파일로 교체</p>
           </div>
-          <p class="message" id="card-message">레벨을 선택하고 카드를 시작하세요.</p>
-        </div>
-
-        <div class="panel card-panel" aria-live="polite">
-          <p class="label">한자</p>
-          <p class="hanzi" id="card-hanzi">-</p>
-          <p class="label">병음</p>
-          <p class="pinyin" id="card-pinyin">-</p>
-          <p class="label">뜻</p>
-          <p id="card-meaning">-</p>
-          <p class="label">예문</p>
-          <p id="card-example">-</p>
-          <button class="btn subtle" id="speak-btn" type="button">발음 듣기</button>
-        </div>
+        </article>
+        <article class="photo-card">
+          <img src="assets/site-photo-1.svg" alt="현장 작업 사진 자리 1" />
+          <div class="photo-meta">
+            <h3>현장 사진 1</h3>
+            <p>`assets/site-photo-1.svg`를 라인/공정 사진으로 교체</p>
+          </div>
+        </article>
+        <article class="photo-card">
+          <img src="assets/site-photo-2.svg" alt="현장 작업 사진 자리 2" />
+          <div class="photo-meta">
+            <h3>현장 사진 2</h3>
+            <p>`assets/site-photo-2.svg`를 품질/설비 사진으로 교체</p>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="section container" id="quiz">
-      <h2>빠른 퀴즈</h2>
-      <div class="panel quiz-panel">
-        <p id="quiz-question">문제를 불러오는 중...</p>
-        <div class="choice-grid" id="quiz-choices"></div>
-        <button class="btn" id="new-quiz" type="button">다른 문제</button>
-        <p class="message" id="quiz-feedback"></p>
+    <section class="section container reveal" id="career">
+      <h2>이력</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <p class="timeline-year">2020 - 2023</p>
+          <h3>마이스터고 재학</h3>
+          <p>기계/자동차 계열 전공 실습 중심 교육 이수</p>
+        </article>
+        <article class="timeline-item">
+          <p class="timeline-year">2024 - 현재</p>
+          <h3>현대자동차 재직</h3>
+          <p>생산 라인 운영, 공정 관리, 품질 안정화 업무 수행</p>
+        </article>
       </div>
     </section>
 
-    <section class="section container" id="pinyin">
-      <h2>병음 입력 연습</h2>
-      <div class="panel">
-        <p>아래 한자의 병음을 입력하세요: <strong id="pinyin-target">-</strong></p>
-        <form id="pinyin-form" class="grid-form">
-          <label for="pinyin-input">병음 입력 (성조 기호 없이)</label>
-          <input id="pinyin-input" autocomplete="off" placeholder="예: nihao" />
-          <button class="btn" type="submit">정답 확인</button>
-        </form>
-        <p class="message" id="pinyin-feedback"></p>
+    <section class="section container reveal" id="projects">
+      <div class="projects-head">
+        <h2>프로젝트</h2>
+        <div class="filter-buttons" role="group" aria-label="프로젝트 필터">
+          <button class="filter-btn active" type="button" data-filter="all">전체</button>
+          <button class="filter-btn" type="button" data-filter="process">공정</button>
+          <button class="filter-btn" type="button" data-filter="quality">품질</button>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card" data-category="process">
+          <p class="project-tag">공정</p>
+          <h3>라인 작업 동선 개선</h3>
+          <p>작업자 이동 동선을 재배치해 비가동 시간을 단축한 개선 사례</p>
+        </article>
+        <article class="project-card" data-category="quality">
+          <p class="project-tag">품질</p>
+          <h3>체결 불량 체크리스트 표준화</h3>
+          <p>반복 불량 포인트를 정리해 신규 인력도 쉽게 점검 가능한 체계 구축</p>
+        </article>
+        <article class="project-card" data-category="process">
+          <p class="project-tag">공정</p>
+          <h3>설비 점검 주기 시각화</h3>
+          <p>점검 항목을 주기별로 시각화해 누락률 감소 및 예지 정비 대응 강화</p>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <p>© <span id="year">2026</span> 중국어 학습 스튜디오</p>
-      <ul class="footer-links">
-        <li><a href="#vocab">단어</a></li>
-        <li><a href="#quiz">퀴즈</a></li>
-        <li><a href="#pinyin">병음</a></li>
-      </ul>
+  <footer class="site-footer" id="contact">
+    <div class="container footer-wrap">
+      <div>
+        <h2>연락처</h2>
+        <p>이메일: songpilgyo@example.com</p>
+        <p>전화: 010-0000-0000</p>
+      </div>
+      <p class="copyright">© <span id="year">2026</span> 송필교 Portfolio</p>
     </div>
   </footer>
 

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="t d">
+  <title id="t">Site Photo Placeholder 1</title>
+  <desc id="d">Replace this with on-site process photo</desc>
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0b1729"/>
+      <stop offset="1" stop-color="#275a98"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#g1)"/>
+  <rect x="180" y="220" width="840" height="460" rx="18" fill="#eaf2ff" opacity="0.92"/>
+  <rect x="230" y="300" width="160" height="160" fill="#7aa7d8"/>
+  <rect x="430" y="300" width="160" height="160" fill="#5e90c8"/>
+  <rect x="630" y="300" width="160" height="160" fill="#3f76b5"/>
+  <rect x="830" y="300" width="160" height="160" fill="#2b5d97"/>
+  <text x="600" y="830" fill="#ffffff" font-size="46" text-anchor="middle" font-family="Arial, sans-serif">SITE PHOTO 1</text>
+</svg>
